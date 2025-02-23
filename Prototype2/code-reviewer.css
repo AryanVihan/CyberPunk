@@ -1,0 +1,76 @@
+/* Code Reviewer Container */
+.code-reviewer-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Code Editor */
+.code-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.code-editor h2 {
+    color: #00ffff;
+    text-align: center;
+}
+
+#code-input {
+    width: 100%;
+    height: 200px;
+    background: #0c0c0c;
+    color: #00ffcc;
+    font-family: monospace;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+#review-code {
+    margin-top: 10px;
+    padding: 10px;
+    background: #00ffff;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#review-code:hover {
+    background: #00aaff;
+    box-shadow: 0 0 10px #00aaff;
+}
+
+/* Review Panel */
+.review-panel {
+    flex: 1;
+    background: #222;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    color: #ff00ff;
+}
+
+.review-panel h2 {
+    text-align: center;
+}
+
+#review-output {
+    background: #111;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ff00ff;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BakaBotDemo</title>
+    <link rel="shortcut icon" href="./src/assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/edit/closebrackets.min.js"></script>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #D2D2D2;
+            background-image:
+            repeating-linear-gradient(
+                to right, transparent 0 100px,
+                #25283b22 100px 101px
+            ),
+            repeating-linear-gradient(
+                to bottom, transparent 0 100px,
+                #25283b22 100px 101px
+            );
+        }
+        
+        body::before{
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav id="navbar">
+            <div class="logo">Cyberpunk</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#chatbot">Chatbot</a></li>
+                <li><a href="#music">Music Player</a></li>
+                <li><a href="#flashcards">Flashcards</a></li>
+                <li><a href="#ai-image-generator">AI Image Generator</a></li>
+                <li><a href="#code-reviewer">Code Reviewer</a></li>
+                <li><a href="#code-editor">Code Editor</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="root"></div>
+    
+    <section id="home" class="section"> 
+        <h1>Welcome to the Cyberpunk Hub</h1>
+        <div class="banner">
+            <div class="slider" style="--quantity: 10">
+                <div class="item" style="--position: 1"><img src="images/dragon_1.jpg" alt=""></div>
+                <div class="item" style="--position: 2"><img src="images/dragon_2.jpg" alt=""></div>
+                <div class="item" style="--position: 3"><img src="images/dragon_3.jpg" alt=""></div>
+                <div class="item" style="--position: 4"><img src="images/dragon_4.jpg" alt=""></div>
+                <div class="item" style="--position: 5"><img src="images/dragon_5.jpg" alt=""></div>
+                <div class="item" style="--position: 6"><img src="images/dragon_6.jpg" alt=""></div>
+                <div class="item" style="--position: 7"><img src="images/dragon_7.jpg" alt=""></div>
+                <div class="item" style="--position: 8"><img src="images/dragon_8.jpg" alt=""></div>
+                <div class="item" style="--position: 9"><img src="images/dragon_9.jpg" alt=""></div>
+                <div class="item" style="--position: 10"><img src="images/dragon_10.jpg" alt=""></div>
+            </div>
+    </section>
+    
+    <section id="chatbot" class="section"> 
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="bot-avatar">
+                </div>
+                <h2>J.A.R.V.I.S</h2>
+                <p>"At your service, sir."</p>
+            </div>
+            <div class="chat-messages" id="chatbox"></div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your command..." />
+                <button id="sendButton"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="music" class="section"> 
+        <h1>Music Player</h1>
+        <div class="music-container">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6GVFc0jR3i9ur3pVU8QM03?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </section>
+    
+    <section id="flashcards" class="section">
+        <div class="flashcards-container">
+            <div class="flashcard-input">
+                <h2>Add Flashcard</h2>
+                <label for="question">Question:</label>
+                <textarea id="question" placeholder="Enter question"></textarea>
+                <label for="answer">Answer:</label>
+                <textarea id="answer" placeholder="Enter answer"></textarea>
+                <button id="add-flashcard">Add Flashcard</button>
+            </div>
+            <div class="flashcard-carousel">
+                <button id="prev" class="nav-btn">&#9665;</button>
+                <div class="carousel-track">
+                    <div class="carousel-container"></div>
+                </div>
+                <button id="next" class="nav-btn">&#9655;</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="ai-image-generator" class="section">
+        <div class="container">
+            <h1>AI Image Generator</h1>
+            <p>Write your prompt here to generate images with the power of AI.</p>
+            <form class="gen-form">
+                <input type="text" id="user-prompt" placeholder="Type your prompt here..." autocomplete="off">
+                <button type="button" id="generate">Generate</button>
+            </form>
+            <div class="result">
+                <div id="loading" style="display: none;">Generating...</div>
+                <div id="image-grid"></div>
+            </div>
+        </div>
+    </section>
+    <section id="code-editor" class="section">
+    <div class="editor-container">
+        <div class="header">
+            <h1>⚡ Cyberpunk Code Editor ⚡</h1>
+        </div>
+        <div class="editors">
+            <div class="editor-box">
+                <h2>HTML</h2>
+                <textarea id="html"></textarea>
+            </div>
+            <div class="editor-box">
+                <h2>CSS</h2>
+                <textarea id="css"></textarea>
+            </div>
+            <div class="editor-box">
+                <h2>JavaScript</h2>
+                <textarea id="js"></textarea>
+            </div>
+        </div>
+        <button id="run">Run Code</button>
+        <div class="preview">
+            <iframe id="live-preview"></iframe>
+        </div>
+    </div>
+</section>
+<section id="code-reviewer" class="section">
+    <h1>Code Reviewer</h1>
+    
+    <div class="code-reviewer-container">
+        <!-- Left Side: Code Editor -->
+        <div class="code-editor">
+            <h2>Code Editor</h2>
+            <textarea id="code-input" placeholder="Write your code here..."></textarea>
+            <button id="review-code">Review</button>
+        </div>
+
+        <!-- Right Side: Review Panel -->
+        <div class="review-panel">
+            <h2>Review Panel</h2>
+            <div id="review-output">Code review will appear here...</div>
+        </div>
+    </div>
+</section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/hint/show-hint.min.js"></script>
+    <script src="script.js"></script>
+    
+    <script src="script.js"></script>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
